@@ -121,7 +121,7 @@
                 bindings = <
                     &bt BT_CLR &bt BT_NXT &kp LC(LS(F)) &kp PSCRN &to DEF_CH                &kp F12 &kp F7 &kp F8 &kp F9 &kp LC(MINUS)
                     &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sk RALT 		                    &kp F11 &kp F4 &kp F5 &kp F6 &kp LC(PLUS)
-                    &kp LC(LS(Z)) &kp LC(LS(X)) &kp LC(LS(C)) &kp LS(TAB) &kp LC(LS(V))		&kp F10 &kp F1 &kp F2 &kp F3 &kp LC(N0)
+                    &kp LC(LS(Z)) &kp LC(LS(X)) &kp LC(LS(C)) &kp LC(TAB) &kp LC(LS(V))		&kp F10 &kp F1 &kp F2 &kp F3 &kp LC(N0)
                                                                             &none &none  	&none &none
                 >;
             };
@@ -177,7 +177,7 @@
                 bindings = <
                     &bt BT_CLR &bt BT_NXT &kp LC(LS(F)) &kp PSCRN &to DEF_US                &kp F12 &kp F7 &kp F8 &kp F9 &kp LC(SLASH)
                     &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sk DED_CH 	                    &kp F11 &kp F4 &kp F5 &kp F6 &kp LC(LS(N1))
-                    &kp LC(LS(Y)) &kp LC(LS(X)) &kp LC(LS(C)) &kp LS(TAB) &kp LC(LS(V))		&kp F10 &kp F1 &kp F2 &kp F3 &kp LC(N0)
+                    &kp LC(LS(Y)) &kp LC(LS(X)) &kp LC(LS(C)) &kp LC(TAB) &kp LC(LS(V))		&kp F10 &kp F1 &kp F2 &kp F3 &kp LC(N0)
                                                                             &none &none  	&none &none
                 >;
             };
