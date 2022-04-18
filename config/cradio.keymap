@@ -1,0 +1,195 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define DEF_US 0
+#define SFT_US 1
+#define SYM_US 2
+#define SSY_US 3
+#define EXT_US 4
+#define FUN_US 5
+
+#define DEF_CH 6
+#define SFT_CH 7
+#define SYM_CH 8
+#define SSY_CH 9
+#define EXT_CH 10
+#define FUN_CH 11
+#define DED_CH 12
+
+/ {
+        macros {
+            ch_grave: ch_grave {
+                label = "ZM_ch_grave";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                wait-ms = <0>;
+                bindings
+                    = <&macro_press &kp LSHFT>
+                    , <&macro_tap &kp EQUAL &kp EQUAL>
+                    , <&macro_release &kp LSHFT>
+                    ;
+            };
+
+            ch_caret: ch_caret {
+                label = "ZM_ch_caret";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                wait-ms = <0>;
+                bindings = <&macro_tap &kp EQUAL &kp EQUAL>;
+            };
+
+            ch_tilde: ch_tilde {
+                label = "ZM_ch_tilde";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                wait-ms = <0>;
+                bindings
+                    = <&macro_press &kp RALT>
+                    , <&macro_tap &kp EQUAL &kp EQUAL>
+                    , <&macro_release &kp RALT>
+                    ;
+            };
+
+
+        };
+
+        combos {
+        compatible = "zmk,combos";
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp ESC>;
+        };
+        };
+
+        keymap {
+            compatible = "zmk,keymap";
+       		default_layer_us {
+                bindings = <
+                    &kp Q &kp W &kp F &kp P &kp B 						                    &kp J &kp L  &kp U &kp Y &kp SQT
+                    &kp A &kp R &kp S &kp T &kp G 			        	                    &kp M &kp N  &kp E &kp I &kp O
+                    &kp Z &kp X &kp C &kp D &kp V				                            &kp K &kp H  &kp CMMA &kp DOT &kp SLASH
+                            &mo SFT_US &mo EXT_US		                                    &mo SYM_US &kp SPACE
+                >;
+            };
+
+       		shift_layer_us {
+                bindings = <
+                    &kp LS(Q) &kp LS(W) &kp LS(F) &kp LS(P) &kp LS(B) 	                    &kp LS(J) &kp LS(L) &kp LS(U) &kp LS(Y) &kp LS(SQT)
+                    &kp LS(A) &kp LS(R) &kp LS(S) &kp LS(T) &kp LS(G) 	                    &kp LS(M) &kp LS(N) &kp LS(E) &kp LS(I) &kp LS(O)
+                    &kp LS(Z) &kp LS(X) &kp LS(C) &kp LS(D) &kp LS(V)	                    &kp LS(K) &kp LS(H)  &kp LS(CMMA) &kp LS(DOT) &kp LS(SLASH)
+                                                          &none &none  	                    &mo SSY_US &none
+                >;
+            };
+
+       		symbols_layer_us {
+                bindings = <
+                    &kp EXCL &kp AT &kp SEMI &kp COLON &kp UNDER 		                    &kp EQUAL &kp N7  &kp N8 &kp N9 &kp PLUS
+                    &kp BSLH &kp PIPE &kp LBRC &kp LPAR &kp LBKT 		                    &kp STAR  &kp N4  &kp N5 &kp N6 &kp MINUS
+                    &none &none &kp RBRC &kp RPAR &kp RBKT		                            &kp N0    &kp N1  &kp N2 &kp N3 &kp SLASH
+                                            &mo SSY_US &mo FUN_US  			                &none &none
+                >;
+            };
+
+            shifted_symbols_layer_us {
+                bindings = <
+                    &none &none &none &none &kp C_BRI_UP                                    &none &kp AMPS  &kp GRAVE &kp TILDE &none
+                    &kp C_MUTE &kp C_VOL_DN &kp C_PP &kp C_VOL_UP &kp C_BRI_DN 		        &none &kp DLLR  &kp PRCNT &kp CARET &kp UNDER
+                    &kp C_EJECT &kp C_PREV &kp C_STOP &kp C_NEXT &none		                &none &kp EXCL  &kp AT &kp HASH &kp PLUS
+                                                                 &none &none  		        &none &none
+                >;
+            };
+
+            extend_layer_us {
+                bindings = <
+                    &kp ESC &kp LA(LEFT) &kp LC(F) &kp LA(RIGHT) &kp INS                    &kp DOWN &kp RIGHT &kp PG_UP &kp END &kp CAPS
+                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sk RALT 		                    &kp DEL &kp BSPC &kp PG_DN &kp HOME &kp ENTER
+                    &kp LC(Z) &kp LC(X) &kp LC(C) &kp TAB &kp LC(V)		                    &kp UP &kp LEFT &sk RCTRL &kp LALT &kp K_APP
+                                                        &none &none  		                &mo FUN_US &none
+                >;
+            };
+
+            function_layer_us {
+                bindings = <
+                    &bt BT_CLR &bt BT_NXT &kp LC(LS(F)) &kp PSCRN &to DEF_CH                &kp F12 &kp F7 &kp F8 &kp F9 &kp LC(MINUS)
+                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sk RALT 		                    &kp F11 &kp F4 &kp F5 &kp F6 &kp LC(PLUS)
+                    &kp LC(LS(Z)) &kp LC(LS(X)) &kp LC(LS(C)) &kp LS(TAB) &kp LC(LS(V))		&kp F10 &kp F1 &kp F2 &kp F3 &kp LC(N0)
+                                                                            &none &none  	&none &none
+                >;
+            };
+
+
+
+       		default_layer_ch {
+                bindings = <
+                    &kp Q &kp W &kp F &kp P &kp B 						                    &kp J &kp L  &kp U &kp Z &kp MINUS
+                    &kp A &kp R &kp S &kp T &kp G 			        	                    &kp M &kp N  &kp E &kp I &kp O
+                    &kp Y &kp X &kp C &kp D &kp V				                            &kp K &kp H  &kp CMMA &kp DOT &kp LS(N7)
+                            &mo SFT_CH &mo EXT_CH		                                    &mo SYM_CH &kp SPACE
+                >;
+            };
+
+       		shift_layer_ch {
+                bindings = <
+                    &kp LS(Q) &kp LS(W) &kp LS(F) &kp LS(P) &kp LS(B) 	                    &kp LS(J) &kp LS(L) &kp LS(U) &kp LS(Z) &kp LS(N2)
+                    &kp LS(A) &kp LS(R) &kp LS(S) &kp LS(T) &kp LS(G) 	                    &kp LS(M) &kp LS(N) &kp LS(E) &kp LS(I) &kp LS(O)
+                    &kp LS(Y) &kp LS(X) &kp LS(C) &kp LS(D) &kp LS(V)	                    &kp LS(K) &kp LS(H)  &kp NON_US_BSLH &kp LS(NON_US_BSLH) &kp LS(MINUS)
+                                                          &none &none  	                    &mo SSY_CH &none
+                >;
+            };
+
+       		symbols_layer_ch {
+                bindings = <
+                    &kp LS(RBKT) &kp RA(N2) &kp LS(COMMA) &kp LS(DOT) &kp LS(SLASH) 		&kp LS(N0) &kp N7  &kp N8 &kp N9 &kp LS(N1)
+                    &kp RA(NON_US_BSLH) &kp RA(N7) &kp RA(SQT) &kp LS(N8) &kp RA(LBKT) 		&kp LS(N3) &kp N4  &kp N5 &kp N6 &kp SLASH
+                    &none &none &kp RA(NON_US_HASH) &kp LS(N9) &kp RA(RBKT)		            &kp N0     &kp N1  &kp N2 &kp N3 &kp LS(N7)
+                                            &mo SSY_CH &mo FUN_CH  			                &none &none
+                >;
+            };
+
+            shifted_symbols_layer_ch {
+                bindings = <
+                    &none &none &none &none &kp C_BRI_UP                                    &none &kp LS(N6) &ch_grave &ch_tilde &none
+                    &kp C_MUTE &kp C_VOL_DN &kp C_PP &kp C_VOL_UP &kp C_BRI_DN 		        &none &kp NON_US_HASH &kp LS(N5) &ch_caret &kp LS(SLASH)
+                    &kp C_EJECT &kp C_PREV &kp C_STOP &kp C_NEXT &none		                &none &kp LS(RBKT) &kp RA(N2) &kp RA(N3) &kp LS(N1)
+                                                                 &none &none  		        &none &none
+                >;
+            };
+
+            extend_layer_ch {
+                bindings = <
+                    &kp ESC &kp LA(LEFT) &kp LC(F) &kp LA(RIGHT) &kp INS                    &kp DOWN &kp RIGHT &kp PG_UP &kp END &kp CAPS
+                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sl DED_CH 		                &kp DEL &kp BSPC &kp PG_DN &kp HOME &kp ENTER
+                    &kp LC(Y) &kp LC(X) &kp LC(C) &kp TAB &kp LC(V)		                    &kp UP &kp LEFT &sk RCTRL &kp LALT &kp K_APP
+                                                        &none &none 		                &mo FUN_CH &none
+                >;
+            };
+
+            function_layer_ch {
+                bindings = <
+                    &bt BT_CLR &bt BT_NXT &kp LC(LS(F)) &kp PSCRN &to DEF_US                &kp F12 &kp F7 &kp F8 &kp F9 &kp LC(SLASH)
+                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sk DED_CH 	                    &kp F11 &kp F4 &kp F5 &kp F6 &kp LC(LS(N1))
+                    &kp LC(LS(Y)) &kp LC(LS(X)) &kp LC(LS(C)) &kp LS(TAB) &kp LC(LS(V))		&kp F10 &kp F1 &kp F2 &kp F3 &kp LC(N0)
+                                                                            &none &none  	&none &none
+                >;
+            };
+
+            dead_key_layer_ch {
+                bindings = <
+                    &none &none &none &none &none                                           &none &none &none &none &none
+                    &none &kp LS(EQUAL) &none &kp RA(MINUS) &none                           &none &none &none &none &none
+                    &none &kp RA(MINUS) &kp LS(N4) &kp RBKT &none                           &none &none &none &none &none
+                                                      &none &none  	                        &none &none
+                >;
+            };
+
+	};
+};
