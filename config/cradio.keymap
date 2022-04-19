@@ -22,7 +22,7 @@
 #define SSY_CH 9
 #define EXT_CH 10
 #define FUN_CH 11
-#define DED_CH 12
+#define INT_CH 12
 
 / {
         macros {
@@ -133,7 +133,7 @@
                     &kp Q &kp W &kp F &kp P &kp B 						                    &kp J &kp L  &kp U &kp Z &kp MINUS
                     &kp A &kp R &kp S &kp T &kp G 			        	                    &kp M &kp N  &kp E &kp I &kp O
                     &kp Y &kp X &kp C &kp D &kp V				                            &kp K &kp H  &kp CMMA &kp DOT &kp LS(N7)
-                            &mo SFT_CH &mo EXT_CH		                                    &mo SYM_CH &kp SPACE
+                            &mo SFT_CH &mo EXT_CH		                                    &mo SYM_CH &lt INT_CH SPACE
                 >;
             };
 
@@ -142,7 +142,7 @@
                     &kp LS(Q) &kp LS(W) &kp LS(F) &kp LS(P) &kp LS(B) 	                    &kp LS(J) &kp LS(L) &kp LS(U) &kp LS(Z) &kp LS(N2)
                     &kp LS(A) &kp LS(R) &kp LS(S) &kp LS(T) &kp LS(G) 	                    &kp LS(M) &kp LS(N) &kp LS(E) &kp LS(I) &kp LS(O)
                     &kp LS(Y) &kp LS(X) &kp LS(C) &kp LS(D) &kp LS(V)	                    &kp LS(K) &kp LS(H)  &kp NON_US_BSLH &kp LS(NON_US_BSLH) &kp LS(MINUS)
-                                                          &none &none  	                    &mo SSY_CH &none
+                                                          &none &none  	                    &mo SSY_CH &lt INT_CH SPACE
                 >;
             };
 
@@ -167,7 +167,7 @@
             extend_layer_ch {
                 bindings = <
                     &kp ESC &kp LA(LEFT) &kp LC(F) &kp LA(RIGHT) &kp INS                    &kp DOWN &kp RIGHT &kp PG_UP &kp END &kp CAPS
-                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sl DED_CH 		                &kp DEL &kp BSPC &kp PG_DN &kp HOME &kp ENTER
+                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sl INT_CH 		                &kp DEL &kp BSPC &kp PG_DN &kp HOME &kp ENTER
                     &kp LC(Y) &kp LC(X) &kp LC(C) &kp TAB &kp LC(V)		                    &kp UP &kp LEFT &sk RCTRL &kp LALT &kp K_APP
                                                         &none &none 		                &mo FUN_CH &none
                 >;
@@ -176,17 +176,17 @@
             function_layer_ch {
                 bindings = <
                     &bt BT_CLR &bt BT_NXT &kp LC(LS(F)) &kp PSCRN &to DEF_US                &kp F12 &kp F7 &kp F8 &kp F9 &kp LC(SLASH)
-                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sk DED_CH 	                    &kp F11 &kp F4 &kp F5 &kp F6 &kp LC(LS(N1))
+                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sk INT_CH 	                    &kp F11 &kp F4 &kp F5 &kp F6 &kp LC(LS(N1))
                     &kp LC(LS(Y)) &kp LC(LS(X)) &kp LC(LS(C)) &kp LC(TAB) &kp LC(LS(V))		&kp F10 &kp F1 &kp F2 &kp F3 &kp LC(N0)
                                                                             &none &none  	&none &none
                 >;
             };
 
-            dead_key_layer_ch {
+            international_layer_ch {
                 bindings = <
-                    &none &none &none &none &none                                           &none &none &none &none &none
-                    &none &kp LS(EQUAL) &none &kp RA(MINUS) &none                           &none &none &none &none &none
-                    &none &kp RA(MINUS) &kp LS(N4) &kp RBKT &none                           &none &none &none &none &none
+                    &none &none &none &none &none                                           &none &none &kp LBKT &none &none
+                    &kp SQT &kp LS(LBKT) &none &kp LS(SEMI) &none                           &none &none &none &none &kp SEMI
+                    &none &kp RA(EQUAL) &kp LS(N4) &none &none                              &none &none &none &none &none
                                                       &none &none  	                        &none &none
                 >;
             };
