@@ -25,6 +25,8 @@
 #define EXT_US 11
 #define FUN_US 12
 
+#define SEL_BT 13
+
 / {
         macros {
             ch_grave: ch_grave {
@@ -112,8 +114,8 @@
 
             function_layer_ch {
                 bindings = <
-                    &bt BT_CLR &bt BT_NXT &kp LC(LS(F)) &kp PSCRN &to DEF_US                 &kp F12 &kp F7 &kp F8 &kp F9 &kp LC(SLASH)
-                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sk INT_CH                          &kp F11 &kp F4 &kp F5 &kp F6 &kp LC(LS(N1))
+                    &sl SEL_BT &bt BT_CLR &kp LC(LS(F)) &kp PSCRN &to DEF_US                 &kp F12 &kp F7 &kp F8 &kp F9 &kp LC(SLASH)
+                    &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sl INT_CH                          &kp F11 &kp F4 &kp F5 &kp F6 &kp LC(LS(N1))
                     &kp LC(LS(Y)) &kp LC(LS(X)) &kp LC(LS(C)) &kp LC(TAB) &kp LC(LS(V))      &kp F10 &kp F1 &kp F2 &kp F3 &kp LC(N0)
                                                                             &none &none      &none &none
                 >;
@@ -124,7 +126,7 @@
                     &none &none &none &none &none                                            &none &none &kp LBKT &none &none
                     &kp SQT &kp LS(LBKT) &none &kp LS(SEMI) &none                            &none &none &none &none &kp SEMI
                     &none &kp RA(EQUAL) &kp LS(N4) &none &none                               &none &none &none &none &none
-                                                      &none &none                            &none &none
+                                                   &none &none                               &none &none
                 >;
             };
 
@@ -175,12 +177,22 @@
 
             function_layer_us {
                 bindings = <
-                    &bt BT_CLR &bt BT_NXT &kp LC(LS(F)) &kp PSCRN &to DEF_CH                 &kp F12 &kp F7 &kp F8 &kp F9 &kp LC(MINUS)
+                    &sl SEL_BT &bt BT_CLR &kp LC(LS(F)) &kp PSCRN &to DEF_CH                 &kp F12 &kp F7 &kp F8 &kp F9 &kp LC(MINUS)
                     &sk LALT &sk LGUI &sk LSFT &sk LCTRL &sk RALT                            &kp F11 &kp F4 &kp F5 &kp F6 &kp LC(PLUS)
                     &kp LC(LS(Z)) &kp LC(LS(X)) &kp LC(LS(C)) &kp LC(TAB) &kp LC(LS(V))      &kp F10 &kp F1 &kp F2 &kp F3 &kp LC(N0)
                                                                             &none &none      &none &none
                 >;
             };
+
+            bluetooth_selection_layer {
+                bindings = <
+                    &none        &none         &none         &none         &none             &none &none &none &none &none
+                    &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5      &none &none &none &none &none
+                    &none        &none         &none         &none         &none             &none &none &none &none &none
+                                                             &none         &none             &none &none
+                >;
+            };
+
 
     };
 };
